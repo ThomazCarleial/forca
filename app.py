@@ -103,11 +103,11 @@ def carregar_exemplo(nome_exemplo):
 def calcular(n, *args):
     """
     args = [Fx1,Fy1,Fz1,x1,y1,z1,  Fx2,Fy2,Fz2,x2,y2,z2, ... até MAX_FORCAS]
-            + (texto_Q, texto_A, texto_u, nome_sistema)
+            + (texto_Q, texto_A, texto_u)
     """
     try:
         campos = args[: MAX_FORCAS * 6]
-        texto_Q, texto_A, texto_u, nome_sistema = args[MAX_FORCAS * 6: MAX_FORCAS * 6 + 4]
+        texto_Q, texto_A, texto_u = args[MAX_FORCAS * 6: MAX_FORCAS * 6 + 3]
 
         n = int(n)
         if n < 1:
@@ -129,7 +129,7 @@ def calcular(n, *args):
 
         sist = SistemaDeForcas(
             forcas=forcas, pontos=pontos, Q=Q, A=A, u=u,
-            nome=nome_sistema or "Sistema de Forças",
+            nome="Sistema de Forças",
         )
 
         def v(x):
